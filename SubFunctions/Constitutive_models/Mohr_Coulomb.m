@@ -9,14 +9,14 @@ de_sp=zeros(4,1);     % change of strain
 
 SigP_up=zeros(3,1);
 %------Parameter of the model---------------------
-E = CModel_parameter(1);                        % Young modoulus
-nu = CModel_parameter(2);                       % Poissons ratio
-phi =CModel_parameter(3)*pi/180;               % Friction angle in radian
-psi =CModel_parameter(4)*pi/180;               % Dailation angle in radian
-c =CModel_parameter(5);
+E = CModel_parameter(1);                         % Young modoulus
+nu = CModel_parameter(2);                        % Poissons ratio
+phi = CModel_parameter(3)*pi/180;                % Friction angle in radian
+psi = CModel_parameter(4)*pi/180;                % Dilation angle in radian
+c = CModel_parameter(5);
 
 k = (1.0+sin(phi))/(1.0-sin(phi));              % Friction parameter in principal stress state 
-m = (1.0+sin(psi))/(1.0-sin(psi));              % Dailation parameter in principal stress state 
+m = (1.0+sin(psi))/(1.0-sin(psi));              % Dilation parameter in principal stress state 
 comp = 2*c*sqrt(k);                             % Uniaxial compressive strength
 PlasPar = [k , comp,  m];                       % Plastic Parameter array
 
