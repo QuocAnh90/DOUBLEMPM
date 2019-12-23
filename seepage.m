@@ -204,6 +204,9 @@ open(writerObj2);
 %     pore_wp     : Liquid Particle pore pressure
 %     F_wp        : Liquid Particle deformation gradient
 %     V_wp        : Liquid Particle volume 
+
+    % Fix the solid particles
+    x_sp = x_spo;
      end
      
      % Update timestep
@@ -223,16 +226,20 @@ open(writerObj2);
     color = velocity;
     scatter(x_wp(:,1),x_wp(:,2),sz,color,'filled');
     hold on
-    scatter(x_sp(:,1),x_sp(:,2),'g');
+    scatter(x_sp(:,1),x_sp(:,2),2,'g');
     grid on
     axis([0,max(LOC(:,1)),0,max(LOC(:,2))]);
-    set(gca,'xtick',0:le(1):max(LOC(:,1)));
-    set(gca,'ytick',0:le(2):max(LOC(:,2)));
-    set(gca,'Yticklabel',[]);
-    set(gca,'Xticklabel',[]);
+%     set(gca,'xtick',0:le(1):max(LOC(:,1)));
+%     set(gca,'ytick',0:le(2):max(LOC(:,2)));
+    yticks([0 0.5 1 1.5])
+    xticks([0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5])
+    grid on
+    grid minor
+    set(gca,'MinorGridLineStyle','-')
     h=colorbar;
+    limits = [0 1];
     colormap(jet(256))
-%     caxis([0 5])                  % Legend scale
+    caxis(limits)                  % Legend scale
 
     frame2 = getframe(Profile);
     writeVideo(writerObj2,frame2);
